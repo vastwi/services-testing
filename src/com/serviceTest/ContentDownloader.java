@@ -3,7 +3,6 @@ package com.serviceTest;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.Charset;
 import java.util.Queue;
 
 public class ContentDownloader implements Runnable{
@@ -28,8 +27,8 @@ public class ContentDownloader implements Runnable{
             if (urlConn != null)
                 urlConn.setReadTimeout(60 * 1000);
             if (urlConn != null && urlConn.getInputStream() != null) {
-                in = new InputStreamReader(urlConn.getInputStream(),
-                        Charset.defaultCharset());
+//                in = new InputStreamReader(urlConn.getInputStream(),
+//                        Charset.defaultCharset());
                 int responseCode = urlConn.getResponseCode();
 //                System.out.println(responseCode);
 //                BufferedReader bufferedReader = new BufferedReader(in);
@@ -42,7 +41,7 @@ public class ContentDownloader implements Runnable{
 //                    bufferedReader.close();
 //                }
             }
-            in.close();
+//            in.close();
         } catch (Exception e) {
             throw new RuntimeException("Exception while calling URL:"+ myURL, e);
         }
